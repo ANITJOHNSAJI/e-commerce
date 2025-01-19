@@ -1,0 +1,112 @@
+/* Reset default margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container for the login form */
+div {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Header of the form */
+h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Input field styling */
+input[type="text"],
+input[type="password"],
+input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin: 5px 0;
+}
+
+/* Input field focus effect */
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #5c6bc0;
+    outline: none;
+}
+
+/* Submit button styling */
+input[type="submit"] {
+    background-color: #5c6bc0;
+    color: white;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #3f51b5;
+}
+
+/* Links styling (Forgot password and Sign up) */
+a {
+    color: #5c6bc0;
+    text-decoration: none;
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Display result message */
+p {
+    margin-top: 20px;
+    color: #ff6347; /* Error or success message color */
+    font-size: 14px;
+}
+
+/* Add media query for responsiveness */
+@media (max-width: 600px) {
+    div {
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    input[type="submit"] {
+        font-size: 16px;
+    }
+}

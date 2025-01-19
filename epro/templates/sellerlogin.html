@@ -4,23 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'style.css' %}"/>
-    <title>Mail App</title>
+    <link rel="stylesheet" href="{% static 'css/sellerlogin.css' %}"> <!-- Link to external CSS -->
+    <title>Seller Login - Watch Shop</title>
 </head>
 <body>
     <div>
-        <h1>Seller login</h1>
+        <h1>Seller Login</h1>
 
         <form method="post">
             {% csrf_token %}
-            <input type="text" name="username" id="">
-            <input type="password" name="password" id="">
-            <input type="submit" value="submit">
+            <input type="text" name="username" id="username" placeholder="Username">
+            <input type="password" name="password" id="password" placeholder="Password">
+            <input type="submit" value="Submit">
         </form>
-        <a href="{% url 'forgotpassword' %}">forgotpassword</a>
-        <a href="{% url 'usersignup' %}">signup</a>
+        
+        <a href="{% url 'forgotpassword' %}">Forgot Password?</a>
+        <a href="{% url 'sellersignup' %}">Sign Up</a>
+        
         <p>{{ result }}</p> 
     </div>
-  
 </body>
 </html>

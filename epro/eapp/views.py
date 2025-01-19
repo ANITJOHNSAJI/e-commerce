@@ -57,6 +57,8 @@ def userlogin(request):
 
     return render(request, 'userlogin.html')
 
+
+
 def sellersignup(request):
     if request.POST:
         email = request.POST.get('email')
@@ -84,7 +86,7 @@ def sellersignup(request):
 
 def sellerlogin(request):
     if 'username' in request.session:
-        return redirect('index')  
+        return redirect('firstpage')  
     
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -94,7 +96,7 @@ def sellerlogin(request):
         if user is not None:
             login(request, user)
             request.session['username'] = username
-            return redirect('index')  # Redirect to the home page
+            return redirect('firstpage')  # Redirect to the home page
         else:
             messages.error(request, "Invalid credentials.")
 
