@@ -5,7 +5,7 @@ from django.conf import settings
 from eapp import views
 
 urlpatterns = [
-     path('',views.userlogin,name='userlogin'),
+  path('',views.userlogin,name='userlogin'),
   path('signup',views.usersignup,name='usersignup'),
   path('sellersignup',views.sellersignup,name='sellersignup'),
   path('sellerlogin',views.sellerlogin,name='sellerlogin'),

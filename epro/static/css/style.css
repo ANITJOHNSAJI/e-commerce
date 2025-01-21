@@ -1,0 +1,36 @@
+/* General body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style for the h1 element */
+h1 {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 2.5em;
+    color: #2c3e50;
+}
+
+/* Styling for the logout link */
+a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.2em;
+    text-decoration: none;
+    color: #3498db;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #ecf0f1;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect for the logout link */
+a:hover {
+    background-color: #3498db;
+    color: white;
+}

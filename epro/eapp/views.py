@@ -99,11 +99,13 @@ def sellerlogin(request):
             return redirect('firstpage')  # Redirect to the home page
         else:
             messages.error(request, "Invalid credentials.")
+            return redirect('firstpage')
 
     return render(request, 'sellerlogin.html')
 
 def firstpage(request):
-    data = Gallery.objects.all()  # Default value for data
+    return render(request, 'firstpage.html')
+    # data = Gallery.objects.all()  # Default value for data
     
     # if request.method == 'POST':
     #     # Handle POST logic
@@ -116,8 +118,8 @@ def firstpage(request):
     #     return redirect('firstpage')  # Redirect after saving the data
 
     # Handle GET request
-    gallery_images = Gallery.objects.all()
-    return render(request, "firstpage.html", {"gallery_images": gallery_images, "feeds": data})
+    # gallery_images = Gallery.objects.all()
+    # return render(request, "firstpage.html", {"gallery_images": gallery_images, "feeds": data})
 
 
 # def verifyotp(request):
