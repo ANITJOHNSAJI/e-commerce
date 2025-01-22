@@ -78,6 +78,7 @@ def sellersignup(request):
         else:
             # Create the user
             user = User.objects.create_user(username=username, email=email, password=password)
+            user.is_staff = True
             user.save()
             messages.success(request, "Account created successfully!")
             return redirect('sellerlogin')  # Redirect to login page
@@ -96,6 +97,8 @@ def sellerlogin(request):
         if user is not None:
             login(request, user)
             request.session['username'] = username
+            if user.is_staff:
+                return redirect('firstpage')
             return redirect('firstpage')  # Redirect to the home page
         else:
             messages.error(request, "Invalid credentials.")
@@ -141,6 +144,18 @@ def firstpage(request):
 #     send_mail('Email Verification', message, email_from, recipient_list)
 
 #     return render(request, "otp.html")
+
+def add(request):
+    # if request.method == 'POST':
+    #     todo123 = request.POST.get("todo")
+    #     todo321 = request.POST.get("date")
+    #     todo311 = request.POST.get("course")
+        
+    #     obj = Gallery(title1=todo123, title2=todo321, title3=todo311)
+    #     obj.save()
+        # return redirect('firstpage')  # Redirect after saving the data
+
+    return render(request, "add.html")
 
 
 
@@ -233,3 +248,8 @@ def logoutuser(request):
     logout(request)
     request.session.flush()
     return redirect(userlogin)
+
+def logoutseller(request):
+    logout(request)
+    request.session.flush()
+    return redirect(sellerlogin)

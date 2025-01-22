@@ -1,35 +1,39 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/firstpage.css' %}">
 </head>
+
 <body class="rr">
     <h2>seller dashboard</h2>
-<div>
     <div>
-        {% for i in feeds %}
+        <div>
+            {% for i in feeds %}
             <div>
                 {% if i.feedimage %}
-                    <img src="{{ i.feedimage.url }}" alt="Gallery Image" width="300">
+                <img src="{{ i.feedimage.url }}" alt="Gallery Image" width="300">
                 {% else %}
-                    <p>No image available</p>
+                <p>No image available</p>
                 {% endif %}
             </div>
+            {% endfor %}
+        </div>
+
+        {% for i in feeds %}
+
+        <span>{{ i.title1 }}</span>
+        <span>{{ i.title2 }}</span>
+        <span>{{ i.title3 }}</span>
         {% endfor %}
     </div>
-    
-{% for i in feeds %}
-
-<span>{{ i.title1 }}</span>
-<span>{{ i.title2 }}</span>
-<span>{{ i.title3 }}</span>
-{% endfor %}
-</div>
-<a href="{% url 'logout' %}">logout</a>
+    <a href="{% url 'add' %}">Add</a>
+    <a href="{% url 'logoutseller' %}">logout</a>
 </body>
+
 </html>
-    <!-- Display images if there are any -->
+<!-- Display images if there are any -->

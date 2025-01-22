@@ -14,7 +14,9 @@ urlpatterns = [
   path('verifyotp',views.verifyotp,name='verifyotp'),
   path('passwordreset',views.passwordreset,name='passwordreset'),
   path('index',views.index,name='index'),
-  path('logout',views.logoutuser,name="logout")
+  path('logout',views.logoutuser,name="logout"),
+  path('logoutseller',views.logoutseller,name="logoutseller"),
+  path('add',views.add,name="add"),
    
 ]
 if settings.DEBUG:

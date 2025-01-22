@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <h1>welcome</h1>
+   <form action="{% url 'add' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="image">Upload Image:</label>
+    <input type="file" name="image" id="image" required>
+    name
+    <input type="text" name="todo" class="ww"><br><br>
+    date
+    <input type="text" name="date" class="www"><br><br>
+    course
+    <input type="text" name="course" class="ww"><br><br>
+    <button type="submit">Submit</button>
+</form>
+<div>
+    {% for i in gallery_images %}
+    {% if i.feedimage %}
+    {% else %}
+        <p>No image for this gallery item</p>
+    {% endif %}
+{% empty %}
+    <p>No images uploaded yet.</p>
+{% endfor %}
+</div>
+
+   <a href="{% url 'logout' %}">logout</a>
+</body>
+</html>

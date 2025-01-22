@@ -1,106 +1,94 @@
-/* Reset default margins and paddings */
-* {
+/* General body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8; /* Light grey background similar to Amazon's */
+    color: #333;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-/* Body and global styles */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-/* Container to center the form */
-div {
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 500px;
     text-align: center;
 }
 
-/* Title styling */
+/* Header style */
 h2 {
-    font-size: 30px;
-    color: #333;
-    margin-bottom: 30px;
-    font-weight: 600;
+    font-size: 2.5em;
+    color: #FF9900; /* Amazon orange */
+    margin-top: 50px;
+    font-weight: bold;
 }
 
-/* Form styling */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+/* Form container */
+div {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-/* Input field styling */
+/* Input field styles */
 input[type="text"],
 input[type="email"],
-input[type="password"],
-input[type="submit"] {
+input[type="password"] {
     width: 100%;
     padding: 12px;
-    font-size: 16px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    margin: 5px 0;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
 }
 
-/* Input field focus effect */
+/* Focus effect on input fields */
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus {
-    border-color: #5c6bc0;
+    border-color: #FF9900; /* Amazon orange focus */
+    background-color: #fff;
     outline: none;
 }
 
-/* Submit button styling */
+/* Submit button style */
 input[type="submit"] {
-    background-color: #5c6bc0;
+    background-color: #FF9900; /* Amazon orange */
     color: white;
-    font-size: 18px;
+    font-size: 1.2em;
+    padding: 12px 20px;
     border: none;
+    border-radius: 4px;
     cursor: pointer;
-    border-radius: 8px;
+    width: 100%;
+    margin-top: 10px;
+    box-sizing: border-box;
     transition: background-color 0.3s ease;
 }
 
+/* Hover effect on submit button */
 input[type="submit"]:hover {
-    background-color: #3f51b5;
+    background-color: #e68900; /* Darker orange */
 }
 
-/* Add spacing between elements */
-form .form-group {
-    margin-bottom: 20px;
+/* Error or success message styling (if applicable) */
+p {
+    color: #e74c3c; /* Red color for error messages */
+    font-size: 1em;
+    margin-top: 20px;
 }
 
-/* Placeholder text styling */
-input::placeholder {
-    color: #888;
-    font-style: italic;
-}
-
-/* Add media query for smaller screens */
+/* Mobile responsive styles */
 @media (max-width: 600px) {
-    div {
-        width: 90%;
-        margin: 20px auto;
+    h2 {
+        font-size: 2em;
     }
 
-    h2 {
-        font-size: 24px;
+    div {
+        width: 90%;
     }
 
     input[type="submit"] {
-        font-size: 16px;
+        font-size: 1em;
     }
 }
