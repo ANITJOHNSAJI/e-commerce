@@ -17,6 +17,8 @@ urlpatterns = [
   path('logout',views.logoutuser,name="logout"),
   path('logoutseller',views.logoutseller,name="logoutseller"),
   path('add',views.add,name="add"),
+  path('delete_g/<int:id>',views.delete_g,name="delete_g"),
+  path('edit_g/<int:id>',views.edit_g,name="edit_g"),
    
 ]
 if settings.DEBUG:

@@ -107,11 +107,14 @@ def sellerlogin(request):
     return render(request, 'sellerlogin.html')
 
 def firstpage(request):
-    return render(request, 'firstpage.html')
+    gallery_images= Gallery.objects.all()
+    gallery_images = Gallery.objects.filter(user=request.user)
+    return render(request,'firstpage.html',{"gallery_images": gallery_images})
+    # # return render(request, 'firstpage.html')
     # data = Gallery.objects.all()  # Default value for data
     
     # if request.method == 'POST':
-    #     # Handle POST logic
+    # #     # Handle POST logic
     #     todo123 = request.POST.get("todo")
     #     todo321 = request.POST.get("date")
     #     todo311 = request.POST.get("course")
@@ -120,7 +123,7 @@ def firstpage(request):
     #     obj.save()
     #     return redirect('firstpage')  # Redirect after saving the data
 
-    # Handle GET request
+    # # Handle GET request
     # gallery_images = Gallery.objects.all()
     # return render(request, "firstpage.html", {"gallery_images": gallery_images, "feeds": data})
 
@@ -146,6 +149,20 @@ def firstpage(request):
 #     return render(request, "otp.html")
 
 def add(request):
+    if request.method == 'POST' and 'image' in request.FILES:  # Ensure the 'image' key is in request.FILES
+        myimage = request.FILES['image']  # Access the uploaded image from request.FILES
+        # Create an instance of Gallery and save the image  # Save the object to the database
+        # return redirect('index')  # Redirect back to the index page after saving
+        todo123=request.POST.get("todo")
+        todo321=request.POST.get("date")
+        todo311=request.POST.get("course")  
+        obj=Gallery(title1=todo123,title2=todo321,title3=todo311,feedimage=myimage,user=request.user)
+        obj.save()
+        data=Gallery.objects.all()
+        return redirect('firstpage')
+    # Retrieve all gallery images to display
+    gallery_images = Gallery.objects.all()
+    return render(request, "add.html")
     # if request.method == 'POST':
     #     todo123 = request.POST.get("todo")
     #     todo321 = request.POST.get("date")
@@ -155,7 +172,7 @@ def add(request):
     #     obj.save()
         # return redirect('firstpage')  # Redirect after saving the data
 
-    return render(request, "add.html")
+    # return render(request, "add.html")
 
 
 
@@ -253,3 +270,20 @@ def logoutseller(request):
     logout(request)
     request.session.flush()
     return redirect(sellerlogin)
+
+def delete_g(request,id):
+    feeds=Gallery.objects.filter(pk=id)
+    feeds.delete()
+    return redirect('firstpage')
+
+def edit_g(request,id):
+    if request.method == 'POST' and 'image' in request.FILES:
+        myimage = request.FILES['image']
+        todo123=request.POST.get("todo")
+        todo321=request.POST.get("date")
+        todo311=request.POST.get("course")
+        Gallery.objects.filter(pk=id).update(title1=todo123,title2=todo321,title3=todo311,feedimage=myimage,user=request.user)
+        return redirect('firstpage')
+    else:
+        gallery_images=Gallery.objects.get(pk=id)
+        return render(request,'add.html',{'data1':gallery_images})
