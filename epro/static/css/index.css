@@ -1,74 +1,109 @@
-/* General body styles */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f8f8; /* Light grey background */
-    color: #333;
+/* index.css */
+
+/* General Reset */
+* {
     margin: 0;
     padding: 0;
-    text-align: center;
-}
-
-/* Container for the content */
-div {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
     box-sizing: border-box;
 }
 
-/* Header styles */
+body.rr {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    padding: 20px;
+}
+
+/* Header */
 h1 {
+    text-align: center;
     font-size: 2.5em;
-    color: #FF9900; /* Amazon orange */
-    margin: 20px 0;
+    color: #131921;
+    margin-bottom: 30px;
     font-weight: bold;
 }
 
-/* Subheader style for "welcome" */
-h1:nth-of-type(2) {
-    font-size: 2em;
-    color: #333; /* Darker text for a subheader */
+/* Gallery Section */
+div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+div div {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+div div:hover {
+    transform: scale(1.05);
+}
+
+div img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+div span {
+    display: block;
     margin-top: 10px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
 }
 
-/* Logout link styles */
-a {
-    display: inline-block;
+/* Button Styles */
+button {
+    background-color: #ff9900;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
     font-size: 1.2em;
-    text-decoration: none;
-    color: #3498db; /* Amazon-style blue for the link */
-    background-color: #ecf0f1; /* Light grey background */
-    padding: 10px 20px;
-    border-radius: 5px;
-    margin-top: 30px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 30px auto;
 }
 
-/* Hover effect for the logout link */
-a:hover {
-    background-color: #3498db; /* Blue background on hover */
-    color: white; /* White text on hover */
+button:hover {
+    background-color: #e68900;
 }
 
-/* Mobile responsiveness */
-@media (max-width: 600px) {
+/* Footer (Not included in the HTML, but for theme consistency) */
+footer {
+    background-color: #131921;
+    color: white;
+    padding: 40px 30px;
+    font-size: 0.9em;
+    text-align: center;
+    margin-top: 40px;
+}
+
+footer p {
+    margin-top: 20px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
     div {
+        justify-content: center;
+    }
+
+    div div {
         width: 90%;
-        padding: 15px;
     }
 
     h1 {
         font-size: 2em;
-    }
-
-    h1:nth-of-type(2) {
-        font-size: 1.8em;
-    }
-
-    a {
-        font-size: 1em;
     }
 }

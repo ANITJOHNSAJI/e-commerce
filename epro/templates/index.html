@@ -7,10 +7,22 @@
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <title>Document</title>
 </head>
-<body><div>
-    <h1>user dashboard</h1>
-   <h1>welcome</h1>
-   <a href="{% url 'logout' %}">logout</a>
-</div>
+   
+    <body class="rr">
+<h1>User DashBoard</h1>
+    <div>
+        <div>
+            {% for i in gallery_images %}
+                <div>
+                    <img src="{{ i.feedimage.url }}" alt="Gallery Image" width="300">
+                    <span>{{ i.title1 }}</span>
+                    <span>{{ i.title2 }}</span>
+                    <span>{{ i.title3 }}</span>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <a href="{% url 'logout' %}"><button>logout</button></a>
+   
 </body>
 </html>

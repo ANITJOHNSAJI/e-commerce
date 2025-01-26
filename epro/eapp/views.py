@@ -1,7 +1,7 @@
 
 
 # Create your views here.
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login,logout
@@ -12,7 +12,9 @@ from datetime import datetime, timedelta
 from.models import *
 
 def index(request):
-    return render(request, 'index.html')
+    # return render(request, 'index.html')
+    gallery_images = Gallery.objects.all()
+    return render(request, "index.html", {"gallery_images": gallery_images})
 
 def usersignup(request):
     if request.POST:
@@ -277,13 +279,47 @@ def delete_g(request,id):
     return redirect('firstpage')
 
 def edit_g(request,id):
-    if request.method == 'POST' and 'image' in request.FILES:
-        myimage = request.FILES['image']
-        todo123=request.POST.get("todo")
-        todo321=request.POST.get("date")
-        todo311=request.POST.get("course")
-        Gallery.objects.filter(pk=id).update(title1=todo123,title2=todo321,title3=todo311,feedimage=myimage,user=request.user)
-        return redirect('firstpage')
-    else:
-        gallery_images=Gallery.objects.get(pk=id)
-        return render(request,'add.html',{'data1':gallery_images})
+      if request.method == 'POST':
+        # Check if the image is provided in the request
+        myimage = request.FILES.get('image')
+        
+        # Get the form data (title, date, course)
+        todo123 = request.POST.get("todo")
+        todo321 = request.POST.get("date")
+        todo311 = request.POST.get("course")
+        
+        # Ensure all fields are populated before updating
+        if todo123 and todo321 and todo311:
+            # Update the Gallery record if all fields are valid
+            gallery_instance = get_object_or_404(Gallery, pk=id)
+            gallery_instance.title1 = todo123
+            gallery_instance.title2 = todo321
+            gallery_instance.title3 = todo311
+            if myimage:  # Update the image only if provided
+                gallery_instance.feedimage = myimage
+            gallery_instance.user = request.user
+            gallery_instance.save()
+
+            # Redirect to 'firstpage' after successful update
+            return redirect('firstpage')
+        else:
+            # If fields are missing, you can return an error message or re-render the form
+            return render(request, 'add.html', {
+                'error': "All fields must be filled out.",
+                'data1': get_object_or_404(Gallery, pk=id)
+            })
+
+      else:
+        # GET request: Fetch the gallery image for editing
+        gallery_images = get_object_or_404(Gallery, pk=id)
+        return render(request, 'add.html', {'data1': gallery_images})
+    # if request.method == 'POST' and 'image' in request.FILES:
+    #     myimage = request.FILES['image']
+    #     todo123=request.POST.get("todo")
+    #     todo321=request.POST.get("date")
+    #     todo311=request.POST.get("course")
+    #     Gallery.objects.filter(pk=id).update(title1=todo123,title2=todo321,title3=todo311,feedimage=myimage,user=request.user)
+    #     return redirect('firstpage')
+    # else:
+    #     gallery_images=Gallery.objects.get(pk=id)
+    #     return render(request,'add.html',{'data1':gallery_images})
