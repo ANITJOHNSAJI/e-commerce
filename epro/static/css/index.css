@@ -1,109 +1,129 @@
-/* index.css */
+/* Amazon-Themed CSS */
 
-/* General Reset */
-* {
+/* Body and Basic Layout */
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    background-color: #f4f4f4;
 }
 
-body.rr {
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
-    color: #333;
+/* Navbar */
+.navbar {
+    background-color: #131921; /* Dark Amazon theme color */
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo a {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .logo-img {
+    height: 40px;
+}
+
+.navbar .nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 5px 10px;
+}
+
+.navbar .nav-links a:hover {
+    background-color: #f08804; /* Hover color */
+    border-radius: 4px;
+}
+
+/* Main Content */
+.main-content {
     padding: 20px;
 }
 
-/* Header */
 h1 {
-    text-align: center;
-    font-size: 2.5em;
+    font-size: 2rem;
     color: #131921;
-    margin-bottom: 30px;
-    font-weight: bold;
 }
 
-/* Gallery Section */
-div {
-    display: flex;
-    flex-wrap: wrap;
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
-    justify-content: center;
 }
 
-div div {
+.gallery-item {
     background-color: white;
-    padding: 15px;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.3s ease;
-    width: 300px;
-    margin-bottom: 20px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-div div:hover {
-    transform: scale(1.05);
-}
-
-div img {
-    width: 100%;
-    height: auto;
+/* Ensure all images in the gallery are the same size */
+.gallery-item img {
+    width: 100%; /* Set to fill the container */
+    height: 300px; /* Fixed height for all images */
+    object-fit: cover; /* Ensures aspect ratio is preserved and fills the box */
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-div span {
-    display: block;
+/* Image info styling */
+.image-info {
     margin-top: 10px;
-    font-size: 1.1em;
-    font-weight: bold;
-    color: #333;
+    padding: 10px 0;
+    text-align: center;
 }
 
-/* Button Styles */
+.image-info .image-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #131921;
+}
+
+.image-info .image-date,
+.image-info .image-course {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Button Styling */
 button {
-    background-color: #ff9900;
+    background-color: #f08804; /* Amazon orange color */
     color: white;
-    padding: 12px 25px;
     border: none;
-    border-radius: 6px;
+    padding: 10px 20px;
     cursor: pointer;
-    font-size: 1.2em;
-    transition: background-color 0.3s ease;
-    display: block;
-    margin: 30px auto;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #e68900;
+    background-color: #d77a03; /* Darker orange on hover */
 }
 
-/* Footer (Not included in the HTML, but for theme consistency) */
-footer {
-    background-color: #131921;
-    color: white;
-    padding: 40px 30px;
-    font-size: 0.9em;
-    text-align: center;
-    margin-top: 40px;
+a button {
+    text-decoration: none;
 }
 
-footer p {
-    margin-top: 20px;
-}
-
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-    div {
-        justify-content: center;
+/* Responsive Layout */
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: 1fr 1fr;
     }
+}
 
-    div div {
-        width: 90%;
-    }
-
-    h1 {
-        font-size: 2em;
+@media (max-width: 480px) {
+    .gallery {
+        grid-template-columns: 1fr;
     }
 }

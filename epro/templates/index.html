@@ -5,24 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
-    <title>Document</title>
+    <title>User Dashboard</title>
 </head>
-   
-    <body class="rr">
-<h1>User DashBoard</h1>
-    <div>
-        <div>
+<body class="amazon-theme">
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" alt="Logo" class="logo-img"></a>
+        </div>
+        <div class="nav-links">
+            <!-- <a href="{% url 'firstpage' %}">Home</a>
+            <a href="{% url 'add' %}">Add Gallery</a> -->
+            <a href="{% url 'logout' %}">Logout</a>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>User Dashboard</h1>
+        <div class="gallery">
             {% for i in gallery_images %}
-                <div>
+                <div class="gallery-item">
                     <img src="{{ i.feedimage.url }}" alt="Gallery Image" width="300">
-                    <span>{{ i.title1 }}</span>
-                    <span>{{ i.title2 }}</span>
-                    <span>{{ i.title3 }}</span>
+                    <div class="image-info">
+                        <span class="image-title">{{ i.title1 }}</span>
+                        <span class="image-date">{{ i.title2 }}</span>
+                        <span class="image-course">{{ i.title3 }}</span>
+                    </div>
                 </div>
             {% endfor %}
         </div>
     </div>
-    <a href="{% url 'logout' %}"><button>logout</button></a>
-   
 </body>
 </html>

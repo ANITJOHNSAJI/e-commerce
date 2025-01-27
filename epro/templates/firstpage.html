@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/firstpage.css' %}">
 </head>
 <body class="main">
-    <h1>welcome</h1>
+    <h1>Seller DashBoard</h1>
      <a href="{% url 'add'%}"><button>uploding a product</button></a> 
+     <a href="{% url 'logoutseller' %}"><button>log out</button></a>
     {% for i in gallery_images %}
      <div>
         <img src="{{ i.feedimage.url }}" alt="Gallery Image" width="300">
@@ -20,7 +21,7 @@
         <a href="{% url 'edit_g' i.id %}"><button>edit</button></a><br><br>
     </div>
     {% endfor %}
-    <a href="{% url 'logoutseller' %}"><button>log out</button></a>
+   
 </body> 
 </html>
 <!-- Display images if there are any -->

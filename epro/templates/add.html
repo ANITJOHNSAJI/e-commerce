@@ -1,12 +1,14 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/add.css' %}">
     <title>Document</title>
 </head>
 <body>
-    <h1>welcome</h1>
+    <h1>Uploading a Product</h1>
    {% if data1 %}
     <form action="{% url 'edit_g' data1.id %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
@@ -44,8 +46,6 @@
     <p>No images uploaded yet.</p>
 {% endfor %}
 </div>
-
-   <a href="{% url 'logout' %}">logout</a>
 
 </body>
 </html>

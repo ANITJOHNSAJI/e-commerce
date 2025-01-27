@@ -1,0 +1,119 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #131921;
+    padding: 10px 20px;
+    color: white;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo img {
+    width: 120px;
+    height: auto;
+}
+
+.navbar-link {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.navbar-link:hover {
+    text-decoration: underline;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-search {
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: none;
+    margin-right: 10px;
+    width: 250px;
+}
+
+.navbar-search-btn {
+    padding: 10px 20px;
+    background-color: #FF9900;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.navbar-search-btn:hover {
+    background-color: #e68900;
+}
+
+.navbar-search-btn:active {
+    background-color: #d77f00;
+}
+
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f6f6f6;
+    color: #333;
+}
+
+/* Style Buttons */
+button {
+    padding: 10px 20px;
+    background-color: #FF9900;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e68900;
+}
+
+button:active {
+    background-color: #d77f00;
+}
+
+/* Style for Images in the gallery */
+img {
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling the Product Listing */
+h1 {
+    font-size: 24px;
+    color: #131921;
+    margin-bottom: 20px;
+}
+
+div {
+    margin: 10px 0;
+}
+
+span {
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+}
