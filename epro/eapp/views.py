@@ -101,7 +101,7 @@ def sellerlogin(request):
             request.session['username'] = username
             if user.is_staff:
                 return redirect('firstpage')
-            return redirect('firstpage')  # Redirect to the home page
+            return redirect('index')  # Redirect to the home page
         else:
             messages.error(request, "Invalid credentials.")
             return redirect('firstpage')
@@ -109,7 +109,7 @@ def sellerlogin(request):
     return render(request, 'sellerlogin.html')
 
 def firstpage(request):
-    gallery_images= Gallery.objects.all()
+   
     gallery_images = Gallery.objects.filter(user=request.user)
     return render(request,'firstpage.html',{"gallery_images": gallery_images})
     # # return render(request, 'firstpage.html')
