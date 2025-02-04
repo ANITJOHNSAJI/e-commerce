@@ -19,6 +19,7 @@ urlpatterns = [
   path('add',views.add,name="add"),
   path('delete_g/<int:id>',views.delete_g,name="delete_g"),
   path('edit_g/<int:id>',views.edit_g,name="edit_g"),
+  # path('product/<int:product_id>/', views.product_detail, name='product_detail'),
    
 ]
 if settings.DEBUG:

@@ -323,3 +323,9 @@ def edit_g(request,id):
     # else:
     #     gallery_images=Gallery.objects.get(pk=id)
     #     return render(request,'add.html',{'data1':gallery_images})
+
+    # def product_detail(request, product_id):
+    # product = Product.objects.get(id=product_id)
+    # if request.method == 'POST':
+    #     return redirect('order_product', product_id=product.id)
+    # return render(request, 'user/product_detail.html', {'product': product})
