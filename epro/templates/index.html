@@ -16,8 +16,8 @@
                         class="logo-img"></a>
             </div>
             <div class="nav-links">
-                <!-- <a href="{% url 'firstpage' %}">Home</a>
-            <a href="{% url 'add' %}">Add Gallery</a> -->
+                <a href="{% url 'index' %}">Home</a>
+            <!-- <a href="{% url 'add' %}">Add Gallery</a> --> 
                 <a href="{% url 'logout' %}">Logout</a>
             </div>
         </nav>
@@ -27,7 +27,7 @@
             <h1>User Dashboard</h1>
             <div class="gallery">
                 {% for i in gallery_images %}
-                <a href="{% url 'firstpage' %}"><div class="gallery-item">
+                <a href="{% url 'product' i.id %}"><div class="gallery-item">
                         <img src="{{ i.feedimage.url }}" alt="Gallery Image"
                             width="300">
                         <div class="image-info">
@@ -39,5 +39,49 @@
                 {% endfor %}
             </div>
         </div>
+        <div class="foot">
+            <div class="foot1">
+              <ul style="list-style-type: none;">
+                <li><img src="./images/logo.png" alt=""></li>
+                <li><img src="./images/foot1.jpeg" alt="" class="footimg"></li>
+                <li>© All rights reserved by Chempakam, Cochin, India.</li>
+              </ul>
+            </div>
+            <div class="foot2">
+              <ul style="list-style-type: none;">
+                <li><b>SOLUTIONS</b></li>
+                <br>
+                <li>My account</li>
+                <li>Track Your Order</li>
+                <li>Order History</li>
+                <li>Payment Methods</li>
+                <li>Privacy Policy</li>
+        
+              </ul>
+            </div>
+            <div class="foot3">
+              <ul style="list-style-type: none;">
+                <li><b>ABOUT US</b></li>
+                <br>
+                <li>About Us</li>
+                <li> Terms & Conditions</li>
+                <li>Privacy Policy</li>
+                <li>Return Policy</li>
+                <li> Site Map</li>
+        
+              </ul>
+            </div>
+            <div class="foot4">
+              <ul style="list-style-type:none">
+                <li><b>CONTACT US</b></li>
+                <br><br>
+                <li> <i class="bi bi-geo-alt"></i>
+                  Kureekkadu, Ernakulam, Kerala</li>
+        
+                <li> <i class="bi bi-telephone"></i> +91-86065 70657</li>
+                <li> <i class="bi bi-clock"></i> Mon - Sat / 9:00AM - 6:00PM</li>
+              </ul>
+            </div>
+          </div>
     </body>
 </html>

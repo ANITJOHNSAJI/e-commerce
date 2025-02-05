@@ -96,34 +96,89 @@ h1 {
     color: #555;
 }
 
-/* Button Styling */
-button {
-    background-color: #f08804; /* Amazon orange color */
+/* Footer Styling */
+.foot {
+    background-color: #131921;
     color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 16px;
-    transition: background-color 0.3s;
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 20px;
+    margin-top: 30px;
+    flex-wrap: wrap;
 }
 
-button:hover {
-    background-color: #d77a03; /* Darker orange on hover */
+.foot1, .foot2, .foot3, .foot4 {
+    width: 23%;
+    padding: 10px;
 }
 
-a button {
+.foot img {
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+.foot img.footimg {
+    width: 100px;
+}
+
+.foot ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.foot ul li {
+    margin-bottom: 10px;
+}
+
+.foot ul li b {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.foot ul li a {
+    color: white;
     text-decoration: none;
+    font-size: 14px;
+}
+
+.foot ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Contact Icons */
+.bi {
+    margin-right: 10px;
+    font-size: 1.2rem;
 }
 
 /* Responsive Layout */
 @media (max-width: 768px) {
+    .foot {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .foot1, .foot2, .foot3, .foot4 {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
     .gallery {
         grid-template-columns: 1fr 1fr;
     }
 }
 
 @media (max-width: 480px) {
+    .foot {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .foot1, .foot2, .foot3, .foot4 {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
     .gallery {
         grid-template-columns: 1fr;
     }
