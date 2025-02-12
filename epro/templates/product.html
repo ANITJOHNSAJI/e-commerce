@@ -24,17 +24,18 @@
 
         <!-- Main Content -->
         <div class="main-content">
-            <h1>Product Deatails</h1>
+            <h1>Product Details</h1>
             <div class="gallery">
                 {% for i in gallery_images %}
                 <div class="gallery-item">
                     <div><img src="{{ i.feedimage.url }}" alt="Gallery Image"
                         width="300"></div>
-                    <div class="image-info">
-                        <span class="image-title">{{ i.title1 }}</span>
-                        <span class="image-date">{{ i.title2 }}</span>
-                        <span class="image-course">{{ i.title3 }}</span>
-                    </div>
+                  
+                </div>
+                <div class="image-info">
+                    <p class="image-title">{{ i.title1 }}</p>
+                    <p class="image-date">{{ i.title2 }}</p>
+                    <p class="image-course">{{ i.title3 }}</p>
                 </div>
                 {% endfor %}
             </div>
@@ -78,7 +79,7 @@
                     <li> <i class="bi bi-geo-alt"></i>
                         Kureekkadu, Ernakulam, Kerala</li>
 
-                    <li> <i class="bi bi-telephone"></i> +91-86065 70657</li>
+                    <li> <i class="bi bi-telephone"></i> +91-8606570657</li>
                     <li> <i class="bi bi-clock"></i> Mon - Sat / 9:00AM -
                         6:00PM</li>
                 </ul>
