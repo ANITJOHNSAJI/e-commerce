@@ -10,6 +10,8 @@ from django.conf import settings
 import random
 from datetime import datetime, timedelta
 from.models import *
+from django.contrib.auth.decorators import login_required
+
 
 def index(request):
     # return render(request, 'index.html')
@@ -157,8 +159,9 @@ def add(request):
         # return redirect('index')  # Redirect back to the index page after saving
         todo123=request.POST.get("todo")
         todo321=request.POST.get("date")
-        todo311=request.POST.get("course")  
-        obj=Gallery(title1=todo123,title2=todo321,title3=todo311,feedimage=myimage,user=request.user)
+        todo311=request.POST.get("course") 
+        todo333=request.POST.get("quant") 
+        obj=Gallery(title1=todo123,title2=todo321,title3=todo311,quantity=todo333,feedimage=myimage,user=request.user)
         obj.save()
         data=Gallery.objects.all()
         return redirect('firstpage')
@@ -327,4 +330,20 @@ def edit_g(request,id):
 def product(request,id):
         gallery_images=Gallery.objects.filter(pk=id)
         return render(request,'product.html',{"gallery_images":gallery_images})
+
+@login_required
+def add_to_cart(request):
+    cart_items = Cart.objects.filter(user=request.user)
+    return render(request, 'cart.html', {"cart_items": cart_items})
+
+    # Check if the product is already in the user's cart
+def cart_views(request, id):
+    product = Gallery.objects.get(id=id)
+    cart_item, created = Cart.objects.get_or_create(
+        user=request.user,
+        product=product,
+        
+    )
+    cart_item.save()
+    return redirect('cart_views')
   

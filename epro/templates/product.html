@@ -36,7 +36,9 @@
                     <p class="image-title">{{ i.title1 }}</p>
                     <p class="image-date">{{ i.title2 }}</p>
                     <p class="image-course">{{ i.title3 }}</p>
+                    <a href="'{% url 'cart' i.id %}"><button>Add to cart</button></a>
                 </div>
+               
                 {% endfor %}
             </div>
         </div>

@@ -20,6 +20,8 @@ urlpatterns = [
   path('delete_g/<int:id>',views.delete_g,name="delete_g"),
   path('edit_g/<int:id>',views.edit_g,name="edit_g"),
   path('product/<int:id>', views.product, name='product'),
+  path('cart/<int:id>', views.cart_views, name='cart'),
+  path('add_to_cart', views.add_to_cart, name='cart_view'),
    
 ]
 if settings.DEBUG:
