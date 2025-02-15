@@ -1,16 +1,15 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/product.css' %}">
+    
     <title>Product Details</title>
 </head>
 <body>
     <nav class="navbar">
         <div class="logo">
-            <a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" alt="Logo" class="logo-img"></a>
+            
         </div>
         <div class="nav-links">
             <a href="{% url 'index' %}">Home</a>
@@ -31,6 +30,8 @@
                 <p class="image-date">{{ i.title2 }}</p>
                 <p class="image-course">{{ i.title3 }}</p>
                 <a href="{% url 'add_to_cart' i.id %}"><button>Add to Cart</button></a>
+                <a href="{% url 'checkout' %}"><button>Buy Now</button></a>
+
             </div>
             {% endfor %}
         </div>

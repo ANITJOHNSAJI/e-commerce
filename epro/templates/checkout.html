@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+    <title>Checkout</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" alt="Logo" class="logo-img"></a>
+        </div>
+        <div class="nav-links">
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'cart' %}">Go to Cart</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <h1>Checkout</h1>
+        
+        <div class="cart-items">
+            {% if cart_items %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in cart_items %}
+                        <tr>
+                            <td>{{ item.product.title1 }}</td>
+                            <td>{{ item.quantity }}</td>
+                            <td>${{ item.product.quantity|floatformat:2 }}</td>  <!-- Assuming quantity is the price -->
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                
+                <h3>Total: ${{ total_price|floatformat:2 }}</h3>
+
+                <form method="POST">
+                    {% csrf_token %}
+                    <button type="submit">Proceed to Payment</button>
+                </form>
+            {% else %}
+                <p>Your cart is empty.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

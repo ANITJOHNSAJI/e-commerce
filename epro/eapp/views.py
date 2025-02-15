@@ -90,7 +90,39 @@ def remove_from_cart(request, id):
     item = get_object_or_404(Cart, id=id)
     item.delete()  # Remove the item from the cart
     return redirect('cart')  # Re
+
+@login_required
+def buy_now(request, id):
+    product = Gallery.objects.get(id=id)
+    cart_item, created = Cart.objects.get_or_create(
+        user=request.user,
+        product=product,
+    )
+    cart_item.quantity += 1  # Increment quantity if the product is already in the cart
+    cart_item.save()
+    return redirect('checkout')
   
+
+@login_required
+def checkout(request):
+    # Get the user's cart items
+    cart_items = Cart.objects.filter(user=request.user)
+    total_price = sum(item.product.quantity * item.quantity for item in cart_items)  # Calculate total price
+
+    # If the user wants to submit the order, handle order processing
+    if request.method == 'POST':
+        # Placeholder for processing the order (you can integrate payment here)
+        # For now, just remove the items from the cart and display a success message
+        cart_items.delete()  # Clear the cart
+        return redirect('order_success')  # Redirect to a success page or payment gateway
+
+    return render(request, 'checkout.html', {
+        'cart_items': cart_items,
+        'total_price': total_price
+    })
+
+def order_success(request):
+    return render(request, 'order_success.html')
 
 
 
