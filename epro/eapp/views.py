@@ -60,6 +60,37 @@ def userlogin(request):
             messages.error(request, "Invalid credentials.")
 
     return render(request, 'userlogin.html')
+# View to display product details
+def product(request, id):
+    gallery_images = Gallery.objects.filter(pk=id)
+    return render(request, 'product.html', {"gallery_images": gallery_images})
+
+# View to add a product to the cart
+@login_required
+def add_to_cart(request, id):
+    product = Gallery.objects.get(id=id)
+    cart_item, created = Cart.objects.get_or_create(
+        user=request.user,
+        product=product,
+    )
+    if not created:
+        cart_item.quantity += 1  # Increment quantity if the product is already in the cart
+        cart_item.save()
+
+    return redirect('cart')  # Redirect to the cart view after adding the item
+
+# View to display the cart items
+@login_required
+def view_cart(request):
+    cart_items = Cart.objects.filter(user=request.user)
+    return render(request, 'cart.html', {"cart_items": cart_items})
+
+def remove_from_cart(request, id):
+    # Assuming CartItem is your model for cart items
+    item = get_object_or_404(Cart, id=id)
+    item.delete()  # Remove the item from the cart
+    return redirect('cart')  # Re
+  
 
 
 
@@ -327,23 +358,4 @@ def edit_g(request,id):
     #     gallery_images=Gallery.objects.get(pk=id)
     #     return render(request,'add.html',{'data1':gallery_images})
 
-def product(request,id):
-        gallery_images=Gallery.objects.filter(pk=id)
-        return render(request,'product.html',{"gallery_images":gallery_images})
 
-@login_required
-def add_to_cart(request):
-    cart_items = Cart.objects.filter(user=request.user)
-    return render(request, 'cart.html', {"cart_items": cart_items})
-
-    # Check if the product is already in the user's cart
-def cart_views(request, id):
-    product = Gallery.objects.get(id=id)
-    cart_item, created = Cart.objects.get_or_create(
-        user=request.user,
-        product=product,
-        
-    )
-    cart_item.save()
-    return redirect('cart_views')
-  

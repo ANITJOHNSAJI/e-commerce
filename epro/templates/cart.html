@@ -1,87 +1,81 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
-</head>
-<body>
-    <div class="navi">
-        <div class="left">
-            <a href="{% url 'firstpage' %}"><div class="ele">Shop Now</div></a>
-           <a href="{% url 'review' %}"><div class="ele">Reviews</div></a>
-           <a href="{% url 'aboutus' %}"><div class="ele">About Us</div></a>
-            <div class="ele">Contact Us</div>
-            <div class="search">
-                <input class="ss" type="search" placeholder="Product Code" id="first name" name="firstname" maxlength="50px" required>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+        <title>Shopping Cart</title>
+    </head>
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="logo">
+                <a href="{% url 'index' %}"><img
+                        src="{% static 'images/logo.png' %}" alt="Logo"
+                        class="logo-img"></a>
             </div>
-            <div class="ice">
-                <div class="ice1">F</div>
-                <div class="ice1">IN</div>
+            <div class="nav-links">
+                <a href="{% url 'index' %}">Home</a>
+                <a href="{% url 'logout' %}">Logout</a>
             </div>
-            <div><a href="{% url 'logout' %}"><button>Logout</button></a></div>
-        </div>
-    </div>
+        </nav>
 
-    <div class="gallery-wrapper">
-        <div class="gallery">
-            {% for item in cart_items %}
-            <div class="cart-item">
-                <img src="{{ item.product.feedimage.url }}" alt="{{ item.product.title1 }}" width="100">
-                <p>{{ item.product.title1 }} - {{ item.quantity }} x ${{ item.product.title2 }}</p>
-            </div>
-        {% endfor %}
-        
-        </div>
-    <footer>
-        <div class="footer-block1">
-            <div class="container">
-                <div class="colm1">
-                    <ul>
-                        <li class="foot-logo"></li>
-                        <li class="foot-icon">
-                            <div class="f"><p>F</p></div>
-                            <div class="tw"><p>TW</p></div>
-                            <div class="in"><p>IN</p></div>
-                            <div class="x"><p>X</p></div>
-                        </li>
-                        <li>
-                            <p>© All rights reserved by shose cart, Cochin, India.</p>
-                        </li>
-                    </ul>
+        <div class="gallery-wrapper">
+            <h1>Your Cart</h1>
+            <div class="gallery">
+                {% for item in cart_items %}
+                <div class="cart-item">
+                    <img src="{{ item.product.feedimage.url }}"
+                        alt="{{ item.product.title1 }}" width="100">
+                    <p>{{ item.product.title1 }} - {{ item.quantity}} x
+                        ${{item.product.title2 }}</p>
+                    <!-- Updated Remove Button with proper URL -->
+                    <a href="{% url 'remove_from_cart' item.id %}"><button>Remove from cart</button></a>
                 </div>
-                <div class="colm2">
-                    <ul>
-                        <li><h4>Solutions</h4></li>
-                        <li>My Account</li>
-                        <li>Track Your Order</li>
-                        <li>Order History</li>
-                        <li>Payment Methods</li>
-                        <li>Privacy Policy</li>
-                    </ul>
-                </div>
-                <div class="colm3">
-                    <ul>
-                        <li><h4>About Us</h4></li>
-                        <li><p>About Us</p></li>
-                        <li><p>Terms & Conditions</p></li>
-                        <li><p>Privacy Policy</p></li>
-                        <li><p>Return Policy</p></li>
-                        <li><p>Site Map</p></li>
-                    </ul>
-                </div>
-                <div class="colm4">
-                    <ul>
-                        <li><h4>Contact Us</h4></li>
-                        <li><p>Kureekkadu, Ernakulam, Kerala</p></li>
-                        <li><a href="tel:+918606570657">+91-86065 70657</a></li>
-                        <li><p>Mon - Sat / 9:00 AM - 6:00 PM</p></li>
-                    </ul>
-                </div>
+                {% endfor %}
             </div>
         </div>
-    </footer>
-</body>
+
+        <div class="foot">
+            <div class="foot1">
+                <ul style="list-style-type: none;">
+                    <li><img src="./images/logo.png" alt></li>
+                    <li><img src="./images/foot1.jpeg" alt class="footimg"></li>
+                    <li>© All rights reserved by Chempakam, Cochin, India.</li>
+                </ul>
+            </div>
+            <div class="foot2">
+                <ul style="list-style-type: none;">
+                    <li><b>SOLUTIONS</b></li>
+                    <br>
+                    <li>My account</li>
+                    <li>Track Your Order</li>
+                    <li>Order History</li>
+                    <li>Payment Methods</li>
+                    <li>Privacy Policy</li>
+                </ul>
+            </div>
+            <div class="foot3">
+                <ul style="list-style-type: none;">
+                    <li><b>ABOUT US</b></li>
+                    <br>
+                    <li>About Us</li>
+                    <li> Terms & Conditions</li>
+                    <li>Privacy Policy</li>
+                    <li>Return Policy</li>
+                    <li> Site Map</li>
+                </ul>
+            </div>
+            <div class="foot4">
+                <ul style="list-style-type:none">
+                    <li><b>CONTACT US</b></li>
+                    <br><br>
+                    <li> <i class="bi bi-geo-alt"></i> Kureekkadu, Ernakulam, Kerala</li>
+                    <li> <i class="bi bi-telephone"></i> +91-86065 70657</li>
+                    <li> <i class="bi bi-clock"></i> Mon - Sat / 9:00AM - 6:00PM</li>
+                </ul>
+            </div>
+        </div>
+    </body>
 </html>
