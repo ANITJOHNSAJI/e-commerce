@@ -12,7 +12,7 @@ from datetime import datetime, timedelta
 from.models import *
 from django.contrib.auth.decorators import login_required
 
-
+# user homepage
 def index(request):
     # return render(request, 'index.html')
     gallery_images = Gallery.objects.all()
@@ -25,7 +25,7 @@ def usersignup(request):
         password = request.POST.get('password')
         confirmpassword = request.POST.get('confpassword')
 
-        # Validate form fields
+        
         if not username or not email or not password or not confirmpassword:
             messages.error(request, 'All fields are required.')
         elif confirmpassword != password:
@@ -35,11 +35,11 @@ def usersignup(request):
         elif User.objects.filter(username=username).exists():
             messages.error(request, "Username already exists.")
         else:
-            # Create the user
+            
             user = User.objects.create_user(username=username, email=email, password=password)
             user.save()
             messages.success(request, "Account created successfully!")
-            return redirect('userlogin')  # Redirect to login page
+            return redirect('userlogin') 
 
     return render(request, "register.html")
 
@@ -55,17 +55,17 @@ def userlogin(request):
         if user is not None:
             login(request, user)
             request.session['username'] = username
-            return redirect('index')  # Redirect to the home page
+            return redirect('index')  
         else:
             messages.error(request, "Invalid credentials.")
 
     return render(request, 'userlogin.html')
-# View to display product details
+
 def product(request, id):
     gallery_images = Gallery.objects.filter(pk=id)
     return render(request, 'product.html', {"gallery_images": gallery_images})
 
-# View to add a product to the cart
+
 @login_required
 def add_to_cart(request, id):
     product = Gallery.objects.get(id=id)
@@ -74,22 +74,29 @@ def add_to_cart(request, id):
         product=product,
     )
     if not created:
-        cart_item.quantity += 1  # Increment quantity if the product is already in the cart
+        cart_item.quantity += 1  
         cart_item.save()
 
-    return redirect('cart')  # Redirect to the cart view after adding the item
+        return redirect('cart')  
+    # else:
+    #     cart_item.save()
+    #     return redirect('userlogin') 
 
-# View to display the cart items
+
 @login_required
 def view_cart(request):
     cart_items = Cart.objects.filter(user=request.user)
     return render(request, 'cart.html', {"cart_items": cart_items})
 
 def remove_from_cart(request, id):
-    # Assuming CartItem is your model for cart items
+    
     item = get_object_or_404(Cart, id=id)
-    item.delete()  # Remove the item from the cart
-    return redirect('cart')  # Re
+    item.delete()  
+    return redirect('cart')  
+
+def product1(request, id):
+    gallery_images = Gallery.objects.filter(pk=id)
+    return render(request, 'product.html', {"gallery_images": gallery_images})
 
 @login_required
 def buy_now(request, id):
@@ -98,22 +105,20 @@ def buy_now(request, id):
         user=request.user,
         product=product,
     )
-    cart_item.quantity += 1  # Increment quantity if the product is already in the cart
+    cart_item.quantity += 1  
     cart_item.save()
     return redirect('checkout')
   
 
 @login_required
 def checkout(request):
-    # Get the user's cart items
+    
     cart_items = Cart.objects.filter(user=request.user)
-    total_price = sum(item.product.quantity * item.quantity for item in cart_items)  # Calculate total price
+    total_price = sum(item.product.quantity * item.quantity for item in cart_items)  
 
-    # If the user wants to submit the order, handle order processing
+    
     if request.method == 'POST':
-        # Placeholder for processing the order (you can integrate payment here)
-        # For now, just remove the items from the cart and display a success message
-        cart_items.delete()  # Clear the cart
+        cart_items.delete()  
         return redirect('order_success')  # Redirect to a success page or payment gateway
 
     return render(request, 'checkout.html', {
@@ -123,6 +128,8 @@ def checkout(request):
 
 def order_success(request):
     return render(request, 'order_success.html')
+
+
 
 
 
@@ -173,6 +180,7 @@ def sellerlogin(request):
 
     return render(request, 'sellerlogin.html')
 
+# seller homepage
 def firstpage(request):
    
     gallery_images = Gallery.objects.filter(user=request.user)
@@ -194,27 +202,7 @@ def firstpage(request):
     # gallery_images = Gallery.objects.all()
     # return render(request, "firstpage.html", {"gallery_images": gallery_images, "feeds": data})
 
-
-# def verifyotp(request):
-#     if request.POST:
-#         otp = request.POST.get('otp')
-#         otp1 = request.session.get('otp')
-#         if otp == otp1:
-#             del request.session['otp']
-#             return redirect('passwordreset')
-#         else:
-#             messages.error(request, 'Invalid OTP. Please try again.')
-
-#     # Generate OTP and send email
-#     otp = ''.join(random.choices('123456789', k=6))
-#     request.session['otp'] = otp
-#     message = f'Your email verification code is: {otp}'
-#     email_from = settings.EMAIL_HOST_USER
-#     recipient_list = [request.session.get('email')]
-#     send_mail('Email Verification', message, email_from, recipient_list)
-
-#     return render(request, "otp.html")
-
+# product adding page
 def add(request):
     if request.method == 'POST' and 'image' in request.FILES:  # Ensure the 'image' key is in request.FILES
         myimage = request.FILES['image']  # Access the uploaded image from request.FILES
@@ -227,21 +215,6 @@ def add(request):
         obj=Gallery(title1=todo123,title2=todo321,title3=todo311,quantity=todo333,feedimage=myimage,user=request.user)
         obj.save()
         data=Gallery.objects.all()
-        return redirect('firstpage')
-    # Retrieve all gallery images to display
-    gallery_images = Gallery.objects.all()
-    return render(request, "add.html")
-    # if request.method == 'POST':
-    #     todo123 = request.POST.get("todo")
-    #     todo321 = request.POST.get("date")
-    #     todo311 = request.POST.get("course")
-        
-    #     obj = Gallery(title1=todo123, title2=todo321, title3=todo311)
-    #     obj.save()
-        # return redirect('firstpage')  # Redirect after saving the data
-
-    # return render(request, "add.html")
-
 
 
 
@@ -389,5 +362,7 @@ def edit_g(request,id):
     # else:
     #     gallery_images=Gallery.objects.get(pk=id)
     #     return render(request,'add.html',{'data1':gallery_images})
+
+
 
 

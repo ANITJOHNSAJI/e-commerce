@@ -17,7 +17,13 @@
             </div>
             <div class="nav-links">
                 <a href="{% url 'index' %}">Home</a>
+              
+                <!-- {% if 'username' in request.session%}
                 <a href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                <a href="{% url 'userlogin' %}">Login</a>
+                {% endif %} -->
+                
             </div>
         </nav>
 
@@ -25,24 +31,27 @@
             <h1>Your Cart</h1>
             <div class="gallery">
                 {% for item in cart_items %}
+                <a href="{% url 'product1' item.product.id %}">
                 <div class="cart-item">
                     <img src="{{ item.product.feedimage.url }}"
                         alt="{{ item.product.title1 }}" width="100">
                     <p>{{ item.product.title1 }} - {{ item.quantity}} x
                         ${{item.product.title2 }}</p>
-                    <!-- Updated Remove Button with proper URL -->
+                    
                     <a href="{% url 'remove_from_cart' item.id %}"><button>Remove from cart</button></a>
                 </div>
+                </a>
                 {% endfor %}
             </div>
         </div>
+        
 
         <div class="foot">
             <div class="foot1">
                 <ul style="list-style-type: none;">
                     <li><img src="./images/logo.png" alt></li>
                     <li><img src="./images/foot1.jpeg" alt class="footimg"></li>
-                    <li>© All rights reserved by Chempakam, Cochin, India.</li>
+                    <li>© All rights reserved by watchcart, Cochin, India.</li>
                 </ul>
             </div>
             <div class="foot2">

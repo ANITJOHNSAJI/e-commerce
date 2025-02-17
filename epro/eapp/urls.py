@@ -5,7 +5,7 @@ from django.conf import settings
 from eapp import views
 
 urlpatterns = [
-  path('',views.userlogin,name='userlogin'),
+  path('userlogin',views.userlogin,name='userlogin'),
   path('signup',views.usersignup,name='usersignup'),
   path('sellersignup',views.sellersignup,name='sellersignup'),
   path('sellerlogin',views.sellerlogin,name='sellerlogin'),
@@ -13,7 +13,7 @@ urlpatterns = [
   path('forgotpassword',views.getusername,name='forgotpassword'),
   path('verifyotp',views.verifyotp,name='verifyotp'),
   path('passwordreset',views.passwordreset,name='passwordreset'),
-  path('index',views.index,name='index'),
+  path('',views.index,name='index'),
   path('logout',views.logoutuser,name="logout"),
   path('logoutseller',views.logoutseller,name="logoutseller"),
   path('add',views.add,name="add"),
@@ -26,6 +26,7 @@ urlpatterns = [
   path('buy-now/<int:id>/', views.buy_now, name='buynow'),
   path('checkout/', views.checkout, name='checkout'),
   path('order_success/', views.order_success, name='order_success'),
+  path('product1/<int:id>/', views.product1, name='product1'),  
 
 
    

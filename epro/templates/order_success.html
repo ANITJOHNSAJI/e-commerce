@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,5 +11,49 @@
     <h1>Thank you for your order!</h1>
     <p>Your order has been placed successfully.</p>
     <a href="{% url 'index' %}"><button>Go to Home</button></a>
+    <div class="foot">
+        <div class="foot1">
+          <ul style="list-style-type: none;">
+            <li><img src="./images/logo.png" alt=""></li>
+            <li><img src="./images/foot1.jpeg" alt="" class="footimg"></li>
+            <li>© All rights reserved by watchcart, Cochin, India.</li>
+          </ul>
+        </div>
+        <div class="foot2">
+          <ul style="list-style-type: none;">
+            <li><b>SOLUTIONS</b></li>
+            <br>
+            <li>My account</li>
+            <li>Track Your Order</li>
+            <li>Order History</li>
+            <li>Payment Methods</li>
+            <li>Privacy Policy</li>
+    
+          </ul>
+        </div>
+        <div class="foot3">
+          <ul style="list-style-type: none;">
+            <li><b>ABOUT US</b></li>
+            <br>
+            <li>About Us</li>
+            <li> Terms & Conditions</li>
+            <li>Privacy Policy</li>
+            <li>Return Policy</li>
+            <li> Site Map</li>
+    
+          </ul>
+        </div>
+        <div class="foot4">
+          <ul style="list-style-type:none">
+            <li><b>CONTACT US</b></li>
+            <br><br>
+            <li> <i class="bi bi-geo-alt"></i>
+              Kureekkadu, Ernakulam, Kerala</li>
+    
+            <li> <i class="bi bi-telephone"></i> +91-86065 70657</li>
+            <li> <i class="bi bi-clock"></i> Mon - Sat / 9:00AM - 6:00PM</li>
+          </ul>
+        </div>
+      </div>
 </body>
 </html>

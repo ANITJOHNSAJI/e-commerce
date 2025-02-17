@@ -1,256 +1,137 @@
-/* General reset */
+/* order_success.css */
+
+/* Basic Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body */
+/* Body and layout */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: #f5f5f5; /* Light grey background */
+    color: #232f3e; /* Amazon dark text color */
+    margin: 0;
 }
 
-/* Amazon theme */
-.amazon-theme {
-    background-color: #f8f8f8;
-}
-
-/* Navbar styles */
+/* Navigation */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #131921;
+    background-color: #131921; /* Amazon dark blue background */
     padding: 10px 20px;
 }
 
-.navbar .logo img {
-    width: 120px;
+.navbar .logo {
+    color: #ff9900; /* Amazon Yellow */
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
-.navbar .nav-links a {
-    color: white;
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: #ffffff;
     text-decoration: none;
-    padding: 10px;
-    font-size: 16px;
-    margin: 0 10px;
+    font-size: 1.1em;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease;
 }
 
-.navbar .nav-links a:hover {
-    background-color: #ff9900;
-    border-radius: 5px;
+.nav-links a:hover {
+    background-color: #ff9900; /* Amazon yellow background on hover */
+    color: #232f3e; /* Change text to dark gray when hovered */
+    border-radius: 3px;
 }
 
-/* Main content */
+/* Main Content */
 .main-content {
-    padding: 40px 20px;
-    text-align: center;
+    margin: 30px auto;
+    padding: 0 20px;
+    max-width: 1200px;
 }
 
 h1 {
-    color: #131921;
-    font-size: 2.5rem;
+    font-size: 2.5em;
+    color: #232f3e; /* Dark text color */
     margin-bottom: 20px;
-}
-
-/* Gallery Section */
-.gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin-top: 40px;
-}
-
-.gallery-item {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    margin: 15px;
     text-align: center;
 }
 
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.gallery-item {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .gallery-item img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
 }
 
 .image-info {
-    margin-top: 10px;
+    padding: 20px;
 }
 
-.image-info span {
-    display: block;
-    font-size: 14px;
-    color: #555;
-    margin: 5px 0;
+.image-info p {
+    font-size: 1.1em;
+    color: #232f3e;
+    margin-bottom: 10px;
 }
 
 .image-info .image-title {
     font-weight: bold;
-    font-size: 16px;
-    color: #131921;
+    font-size: 1.3em;
 }
 
-/* Footer */
-.foot {
-    background-color: #131921;
-    color: white;
-    padding: 40px 20px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+.image-info .image-course {
+    font-style: italic;
+    color: #ff9900; /* Highlight with Amazon yellow */
 }
 
-.foot1,
-.foot2,
-.foot3,
-.foot4 {
-    flex: 1;
-    margin: 10px;
-}
-
-.foot1 ul,
-.foot2 ul,
-.foot3 ul,
-.foot4 ul {
-    list-style-type: none;
-}
-
-.foot1 img {
-    width: 100px;
-    margin-bottom: 10px;
-}
-
-.foot1 .footimg {
-    width: 150px;
-    margin-top: 10px;
-}
-
-.foot2 ul,
-.foot3 ul {
-    font-size: 14px;
-}
-
-.foot2 b,
-.foot3 b {
-    font-size: 16px;
-}
-
-.foot4 i {
-    margin-right: 10px;
-}
-
-/* Footer links hover effect */
-.foot ul li a {
-    color: #ff9900;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.foot ul li a:hover {
-    color: white;
-}
-
-/* Product Detail Section */
-.product-detail {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
-    padding: 0 20px;
-}
-
-.product-info {
-    flex: 1;
-    margin-left: 30px;
-}
-
-.product-info h2 {
-    color: #131921;
-    font-size: 2rem;
-}
-
-.product-info p {
-    color: #555;
-    line-height: 1.6;
-    margin: 20px 0;
-}
-
-.product-price {
-    font-size: 1.8rem;
-    color: #ff9900;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-.product-rating {
-    color: #ff9900;
-    margin-top: 10px;
-}
-
-.product-description {
-    font-size: 14px;
-    margin-top: 15px;
-    color: #555;
-}
-
-/* Add to cart button */
-.add-to-cart-btn {
-    background-color: #ff9900;
-    color: white;
-    font-size: 1.2rem;
-    padding: 12px 25px;
+/* Buttons */
+button {
+    font-size: 1.1em;
+    background-color: #ff9900; /* Amazon yellow */
+    color: #ffffff;
     border: none;
+    padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 15px;
+    margin-top: 10px;
     transition: background-color 0.3s ease;
 }
 
-.add-to-cart-btn:hover {
-    background-color: #e68900;
+button:hover {
+    background-color: #ff8c00; /* Darker yellow on hover */
 }
 
-/* Image section (left side of the product page) */
-.product-image {
-    flex: 1;
-    text-align: center;
+a {
+    text-decoration: none;
 }
 
-.product-image img {
-    width: 100%;
-    height: auto;
-    max-width: 500px;
-    border-radius: 10px;
-}
-
-/* Responsiveness */
-@media screen and (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .product-detail {
+/* Responsive Design */
+@media (max-width: 768px) {
+    .gallery {
         flex-direction: column;
         align-items: center;
     }
 
-    .product-info {
-        margin-left: 0;
-        text-align: center;
-    }
-
-    .gallery {
-        flex-direction: column;
-    }
-
-    .foot {
-        flex-direction: column;
-        text-align: center;
+    .gallery-item {
+        width: 80%;
     }
 }
