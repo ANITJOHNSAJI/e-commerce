@@ -14,12 +14,12 @@
             <div class="nav-links">
                 <a href="{% url 'index' %}">Home</a>
                 <a href="{% url 'cart' %}">Go to Cart</a>
-                <!-- {% if 'username' in request.session%}
+                {% if 'username' in request.session%}
                 <a href="{% url 'logout' %}">Logout</a>
                 {% else %}
                 <a href="{% url 'userlogin' %}">Login</a>
-                {% endif %} -->
-                <a href="{% url 'logout' %}">Logout</a>
+                {% endif %}
+
             </div>
         </nav>
 
@@ -28,20 +28,24 @@
             <div class="gallery">
                 {% for i in gallery_images %}
                 <div class="gallery-item">
-                    <img src="{{ i.feedimage.url }}" alt="Gallery Image"
-                        width="300">
+                    <img src="{{ i.feedimage.url }}" alt="Gallery Image" width="300">
                 </div>
                 <div class="image-info">
                     <p class="image-title">{{ i.title1 }}</p>
                     <p class="image-date">{{ i.title2 }}</p>
                     <p class="image-course">{{ i.title3 }}</p>
-                    <a href="{% url 'add_to_cart' i.id %}"><button>Add to
-                            Cart</button></a>
+                
+                    {% if i.id in cart_item_ids %}
+                        <!-- If the product is already in the cart, show 'Go to Cart' -->
+                        <a href="{% url 'cart' %}"><button>Go to Cart</button></a>
+                    {% else %}
+                        <!-- If the product is not in the cart, show 'Add to Cart' -->
+                        <a href="{% url 'add_to_cart' i.id %}"><button>Add to Cart</button></a>
+                    {% endif %}
+                
                     <a href="{% url 'checkout' %}"><button>Buy Now</button></a>
-
                 </div>
                 {% endfor %}
-            </div>
         </div>
         <div class="foot">
             <div class="foot1">

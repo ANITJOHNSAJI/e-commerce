@@ -1,27 +1,35 @@
-{%load  static%}
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'css/firstpage.css' %}">
-</head>
-<body class="main">
-    <h1>Seller DashBoard</h1>
-     <a href="{% url 'add'%}"><button>uploding a product</button></a> 
-     <a href="{% url 'logoutseller' %}"><button>log out</button></a>
-    {% for i in gallery_images %}
-     <div>
-        <img src="{{ i.feedimage.url }}" alt="Gallery Image" width="300">
-        <span>{{ i.title1 }}</span>
-        <span>{{ i.title2 }}</span>
-        <span>{{ i.title3 }}</span>
-        <a href="{% url 'delete_g' i.id %}"><button>delete</button></a>
-        <a href="{% url 'edit_g' i.id %}"><button>edit</button></a><br><br>
-    </div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="{% static 'css/firstpage.css' %}">
+    </head>
+    <body class="main">
+        <h1>Seller DashBoard</h1>
+        <a href="{% url 'add'%}"><button>uploding a product</button></a>
+        <a href="{% url 'logoutseller' %}"><button>log out</button></a>
+        {% for i in gallery_images %}
+        <div>
+            <img src="{{ i.feedimage.url }}" alt="Gallery Image" width="300">
+            <span>{{ i.title1 }}</span>
+            <span>{{ i.title2 }}</span>
+            <span>{{ i.title3 }}</span>
+            <a href="{% url 'delete_g' i.id %}"><button>delete</button></a>
+            <a href="{% url 'edit_g' i.id %}"><button>edit</button></a><br><br>
+        </div>
+        {% endfor %}
+        {% for notification in notifications %}
+        <li>
+            <a href="{% url 'mark_notification_as_read' notification.id %}">
+                {{ notification.message }} - <small>{{ notification.timestamp }}</small>
+            </a>
+        </li>
     {% endfor %}
-   
-</body> 
+    
+
+    </body>
 </html>
 <!-- Display images if there are any -->
