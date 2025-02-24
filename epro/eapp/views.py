@@ -9,7 +9,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 import random
 from datetime import datetime, timedelta
-from.models import *
+from . models import *
 from django.contrib.auth.decorators import login_required
 
 # user homepage

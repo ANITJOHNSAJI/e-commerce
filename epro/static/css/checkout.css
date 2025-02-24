@@ -1,0 +1,212 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body Styling */
+body {
+    background-color: #f2f2f2;
+    color: #111;
+    line-height: 1.6;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #131921;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 30px;
+    align-items: center;
+}
+
+.navbar .logo img {
+    width: 120px;
+}
+
+.navbar .nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    margin: 0 10px;
+    font-weight: 600;
+}
+
+.navbar .nav-links a:hover {
+    background-color: #ff9900;
+    border-radius: 5px;
+}
+
+/* Main Content Area */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+}
+
+.main-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #232f3e;
+}
+
+.cart-items table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.cart-items table th,
+.cart-items table td {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-items table th {
+    background-color: #f7f7f7;
+    font-weight: bold;
+}
+
+.cart-items table td {
+    color: #555;
+}
+
+.cart-items h3 {
+    font-size: 1.5em;
+    color: #232f3e;
+    margin-top: 20px;
+}
+
+form button {
+    background-color: #ff9900;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #ff7a00;
+}
+
+/* Address Textarea */
+form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+/* Footer Styling */
+.foot {
+    background-color: #131921;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 20px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+    gap: 20px; /* Ensures spacing between columns */
+}
+
+.foot1, .foot2, .foot3, .foot4 {
+    width: 23%;
+    min-width: 250px; /* Prevent columns from becoming too narrow */
+    padding: 10px;
+}
+
+.foot img {
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+.foot img.footimg {
+    width: 100px;
+}
+
+.foot ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.foot ul li {
+    margin-bottom: 10px;
+}
+
+.foot ul li b {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.foot ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.foot ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Contact Icons */
+.bi {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar .logo img {
+        width: 100px;
+    }
+    .navbar .nav-links {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .foot {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .foot1, .foot2, .foot3, .foot4 {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    .cart-items table {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .foot {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .foot1, .foot2, .foot3, .foot4 {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .cart-items table {
+        font-size: 12px;
+    }
+}
