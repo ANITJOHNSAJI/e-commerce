@@ -1,0 +1,120 @@
+/* Amazon-Themed CSS for Order Success Page */
+
+/* Body and Basic Layout */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+/* Header */
+h1 {
+    font-size: 2.5rem;
+    color: #131921;
+    margin-top: 50px;
+}
+
+p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+/* Button */
+button {
+    background-color: #f08804; /* Amazon Orange */
+    color: white;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #e07700; /* Darker orange on hover */
+}
+
+/* Footer Styling */
+.foot {
+    background-color: #131921;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 20px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+}
+
+.foot1, .foot2, .foot3, .foot4 {
+    width: 23%;
+    padding: 10px;
+}
+
+.foot img {
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+.foot img.footimg {
+    width: 100px;
+}
+
+.foot ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.foot ul li {
+    margin-bottom: 10px;
+}
+
+.foot ul li b {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.foot ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.foot ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Contact Icons */
+.bi {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+    .foot {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .foot1, .foot2, .foot3, .foot4 {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .foot {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .foot1, .foot2, .foot3, .foot4 {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
